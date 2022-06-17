@@ -1,24 +1,10 @@
 # cloudrun-example-api
-
-
-## Publishing to Google Cloud Artifact Registry
  
-To push a new version to registry:
-
-First, authenticate as the service account `registry-pusher@ingka-da-fl-dev.iam.gserviceaccount.com`
-
-Then, run:
-
-```
-docker build . -t api_test
-gcloud auth configure-docker europe-west4-docker.pkg.dev 
-docker tag api_test europe-west4-docker.pkg.dev/ingka-da-fl-dev/ppo-repo/api_test
-docker push europe-west4-docker.pkg.dev/ingka-da-fl-dev/ppo-repo/api_test
-```
+This is a repository that contains an example of a Dockerized Flask API, used in the blog post [Deploying a Flask API to Google Cloud Run using Terraform]().
 
 ## Running the Docker container
 
-Make sure you have built the container with
+Fisr, build the container with
 
 ```
 docker build . -t api_test

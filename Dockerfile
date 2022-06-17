@@ -5,7 +5,7 @@ FROM python:3.9-slim-buster
 ENV POETRY_VERSION=1.1.13 \
   PORT=5000
 
-# System deps:
+# Install poetry
 RUN pip install "poetry==$POETRY_VERSION"
 
 # Copy only requirements to cache them in docker layer
