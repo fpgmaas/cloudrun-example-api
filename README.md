@@ -15,3 +15,8 @@ Then, run the container with
 ```
 docker run -d --env PORT=8080 -p 8080:8080 api_test
 ```
+
+---
+
+[![Run on Google
+Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/fpgmaas/cloudrun-example-api.git)
