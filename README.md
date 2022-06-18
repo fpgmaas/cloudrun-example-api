@@ -15,9 +15,3 @@ Then, run the container with
 ```
 docker run -d --env PORT=8080 -p 8080:8080 api_test
 ```
-
-or run it interactively with
-
-```
-docker run --rm -it --env PORT=8080 --entrypoint bash api_test
-```
