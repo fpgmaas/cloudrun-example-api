@@ -13,7 +13,7 @@ docker build . -t flask_api
 Then, run the container with
 
 ```
-docker run -d --env PORT=8080 -p 8080:8080 flask_api
+docker run -d --env PORT=5000 -p 5000:5000 flask_api
 ```
 
 ---

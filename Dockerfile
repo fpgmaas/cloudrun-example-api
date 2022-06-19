@@ -18,4 +18,4 @@ RUN poetry config virtualenvs.create false && poetry install --no-interaction --
 # Creating folders, and files for a project:
 COPY . /code
 
-CMD python3 -m flask run --host=0.0.0.0 --port=${PORT}
+CMD gunicorn app:app -w 2 --threads 2 -b 0.0.0.0:${PORT}
