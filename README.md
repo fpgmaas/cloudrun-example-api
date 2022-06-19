@@ -7,13 +7,13 @@ This is a repository that contains an example of a Dockerized Flask API, used in
 First, build the container with
 
 ```
-docker build . -t api_test
+docker build . -t flask_api
 ```
 
 Then, run the container with
 
 ```
-docker run -d --env PORT=8080 -p 8080:8080 api_test
+docker run -d --env PORT=8080 -p 8080:8080 flask_api
 ```
 
 ---
