@@ -28,7 +28,7 @@ jobs:
         run: gcloud auth configure-docker europe-west4-docker.pkg.dev
 
       - name: Build docker image
-        run:  docker build -t europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api 
+        run:  docker build . -t europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api 
 
       - name: Push to Google Container Registry
         run:  docker push europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api
