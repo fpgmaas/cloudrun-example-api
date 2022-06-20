@@ -1,0 +1,35 @@
+on:
+  release:
+    types: [published]
+    branches: [main]
+
+name: release-main
+
+jobs:
+
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Check out
+        uses: actions/checkout@v2
+
+      - name: Set up poetry
+        uses: ./.github/workflows/setup-poetry-env
+
+      - name: Authenticate GCP
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.DOCKER_PUSHER_SERVICE_ACCOUNT_KEY }}'
+
+      - name: Set up gcloud SDK
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+      - name: Configure docker for GCP
+        run: gcloud auth configure-docker europe-west4-docker.pkg.dev
+
+      - name: Build docker image
+        run:  docker build . -t europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api 
+
+      - name: Push to Google Container Registry
+        run:  docker push europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api
