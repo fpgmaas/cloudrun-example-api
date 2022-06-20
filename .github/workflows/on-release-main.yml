@@ -1,12 +1,13 @@
 on:
-    pull_request:
-        types: [opened, synchronize, reopened]
+  release:
+    types: [published]
+    branches: [main]
 
 name: release-main
 
 jobs:
 
-  Push:
+  Release:
     runs-on: ubuntu-latest
     steps:
     
@@ -16,12 +17,12 @@ jobs:
       - name: Set up poetry
         uses: ./.github/workflows/setup-poetry-env
 
-      - id: 'auth'
+      - name: Authenticate GCP
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.DOCKER_PUSHER_SERVICE_ACCOUNT_KEY }}'
 
-      - name: 'Set up Cloud SDK'
+      - name: Set up gcloud SDK
         uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: Configure docker for GCP
