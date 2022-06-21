@@ -22,6 +22,10 @@ jobs:
         with:
           credentials_json: '${{ secrets.DOCKER_PUSHER_SERVICE_ACCOUNT_KEY }}'
 
+      - name: Set output
+          id: vars
+          run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+
       - name: Set up gcloud SDK
         uses: 'google-github-actions/setup-gcloud@v0'
 
@@ -29,7 +33,11 @@ jobs:
         run: gcloud auth configure-docker europe-west4-docker.pkg.dev
 
       - name: Build docker image
-        run:  docker build . -t europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api 
+        run:  docker build . -t europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api:${RELEASE_VERSION}
+        env:
+            RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
 
       - name: Push to Google Container Registry
-        run:  docker push europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api
+        run:  docker push europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api:${RELEASE_VERSION}
+        env:
+            RELEASE_VERSION: ${{ steps.vars.outputs.tag }}

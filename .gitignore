@@ -1,3 +1,4 @@
 __pycache__
 .venv
 docker_service_account.json
+.DS_Store
