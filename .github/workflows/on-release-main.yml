@@ -1,7 +1,6 @@
 on:
   release:
     types: [published]
-    branches: [main]
 
 name: release-main
 
@@ -23,8 +22,8 @@ jobs:
           credentials_json: '${{ secrets.DOCKER_PUSHER_SERVICE_ACCOUNT_KEY }}'
 
       - name: Set output
-          id: vars
-          run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
       - name: Set up gcloud SDK
         uses: 'google-github-actions/setup-gcloud@v0'
