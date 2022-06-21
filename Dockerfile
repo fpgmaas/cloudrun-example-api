@@ -15,7 +15,7 @@ COPY poetry.lock pyproject.toml /code/
 # Project initialization:
 RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi --no-root
 
-# Creating folders, and files for a project:
-COPY . /code
+# Copy our Flask app to the Docker image
+COPY app.py /code
 
 CMD gunicorn app:app -w 2 --threads 2 -b 0.0.0.0:${PORT}
