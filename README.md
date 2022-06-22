@@ -1,8 +1,6 @@
 # cloudrun-example-api
  
-This is a repository that contains an example of a Dockerized Flask API, used in the blog post [Deploying a Flask API to Google Cloud Run using Terraform](https://fpgmaas.com/blog/deploying-a-flask-api-to-cloudrun).
-
-The repository with the infrastructure required to deploy this API to Google Cloud Run can be found [here](https://github.com/fpgmaas/cloudrun-example-infra).
+This is a repository that contains the code used to create a Dockerized Flask API and to deploy it to Google Artifact Repository, used for [this blog post](https://fpgmaas.com/blog/deploying-a-flask-api-to-cloudrun-2). The related GitHub repository with the Flask API can be found [here](https://github.com/fpgmaas/cloudrun-example-api).
 
 ## Running the Docker container
 
