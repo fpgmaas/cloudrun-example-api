@@ -20,9 +20,8 @@ docker run -d --env PORT=5000 -p 5000:5000 flask_api
 
 ## Deploying the image to Google Cloud
 
-To deploy the Docker image to Google Cloud, simply create a new release on `main` through the GitHub UI, with a tag
-in the form `*.*.*`, where the `*` are alphanumeric characters. By default, the image is pushed to
-`europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api:<tag>`.
+To deploy the Docker image to Google Cloud, simply create a new release on `main` through the GitHub UI. 
+By default, the image is pushed to `europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api:<tag>`.
 
 ---
 

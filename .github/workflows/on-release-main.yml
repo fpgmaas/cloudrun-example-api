@@ -22,7 +22,7 @@ jobs:
         with:
           credentials_json: '${{ secrets.DOCKER_PUSHER_SERVICE_ACCOUNT_KEY }}'
 
-      - name: Set output
+      - name: Get tag
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
